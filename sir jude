@@ -1,0 +1,61 @@
+#%%
+x = y = 0
+Battery = 100
+while True:
+    print("<<Robby Path Finding Robot Simulation>>")
+    print("[1] Location\n[2] Move\n[3] Reset\n[4] Recharge\n[5] Quit")
+    try:
+        choice = int(input("Enter choice>>"))
+    except ValueError:
+        print("Invalid input. Enter an integer")
+        continue
+    if choice == 1:
+        print(f"Robby is at ({x},{y}) ")
+    elif choice == 2:
+        direction = ""
+        distance = 0
+        while direction not in ["N","E","W","S"]:
+            direction = input("Enter direction (N,E,W,S)>>").upper()
+        while distance <=0:
+            try:
+                distance = int(input("Enter distance >>"))
+            except ValueError:
+                print("Distance must be > 0 and a number")
+        if direction == 'N':
+            y += distance
+        elif direction == 'E':
+            x += distance
+        elif direction == 'W':
+            x -= distance
+        elif direction == 'S':
+            y -= distance 
+        
+        Battery_cost = distance * 10 
+        Battery -= Battery_cost
+    
+        print(f'Battery : {Battery}')
+        print(f'Robby moved {direction}, {distance} units')
+    elif choice == 3:
+        x=y=0
+        print(f"Robby is back in the origin ({x},{y})")
+    elif choice == 4:
+        print ("charged")
+        
+    elif choice == 5:
+        
+        
+        break
+        
+    else:
+        print("Please enter a valid option!")
+print("Program Terminated")
+
+
+
+
+
+
+
+
+
+#%%
